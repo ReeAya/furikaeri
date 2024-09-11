@@ -1,38 +1,21 @@
 import { useState } from "react";
+import { v4 as uuid } from "uuid";
 import Post from "./Post";
 import NewPost from "./NewPost";
 import Modal from "./Modal";
 import classes from "./PostsList.module.css";
 
 export default function PostsList({ modalVisible, onStopPosting }) {
-  //
-  const [enteredBody, setEnteredBody] = useState("");
-  const [enteredAuthor, setEnteredAuthor] = useState("");
-  const [enteredFeeling, setEnteredFeeling] = useState("");
-  //
-
-  function bodyChangeHandler(e) {
-    setEnteredBody(e.target.value);
-  }
-  function authorChangeHandler(e) {
-    setEnteredAuthor(e.target.value);
-  }
-  function feelingChangeHandler(e) {
-    setEnteredFeeling(e.target.value);
-    console.log(e.target.value);
-  }
-
+  const [posts, setPosts] = useState([]);
   let modalContent;
 
+  function addPostsHandler(postsData) {
+    setPosts((existingPosts) => [postsData, ...existingPosts]);
+  }
   if (modalVisible) {
     modalContent = (
       <Modal onClose={onStopPosting}>
-        <NewPost
-          onBodyChange={bodyChangeHandler}
-          onAuthorChange={authorChangeHandler}
-          onFeelingChange={feelingChangeHandler}
-          onCancel={onStopPosting}
-        />
+        <NewPost onCancel={onStopPosting} onAddPost={addPostsHandler} />
       </Modal>
     );
   }
@@ -41,12 +24,14 @@ export default function PostsList({ modalVisible, onStopPosting }) {
       {modalVisible ? modalContent : null}
 
       <ul className={classes.posts}>
-        <Post
-          author={enteredAuthor}
-          feeling={enteredFeeling}
-          body={enteredBody}
-        />
-        <Post author="Ree" body="lalalalalala" />
+        {posts.map((post) => (
+          <Post
+            author={post.author}
+            feeling={post.feeling}
+            body={post.body}
+            key={uuidv4()}
+          />
+        ))}
       </ul>
     </>
   );

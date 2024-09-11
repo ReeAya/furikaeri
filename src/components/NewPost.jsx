@@ -1,26 +1,49 @@
+import { useState } from "react";
 import "./NewPost.module.css";
 import classes from "./NewPost.module.css";
 
-export default function NewPost({
-  onAuthorChange,
-  onCancel,
-  onFeelingChange,
-  onBodyChange,
-}) {
+export default function NewPost({ onCancel, onAddPost }) {
+  //
+  const [enteredBody, setEnteredBody] = useState("");
+  const [enteredAuthor, setEnteredAuthor] = useState("");
+  const [enteredFeeling, setEnteredFeeling] = useState("");
+  //
+
+  function bodyChangeHandler(e) {
+    setEnteredBody(e.target.value);
+  }
+  function authorChangeHandler(e) {
+    setEnteredAuthor(e.target.value);
+  }
+  function feelingChangeHandler(e) {
+    setEnteredFeeling(e.target.value);
+  }
+
+  function submitFormHandler(e) {
+    e.preventDefault();
+    const postData = {
+      body: enteredBody,
+      author: enteredAuthor,
+      feeling: enteredFeeling,
+    };
+
+    onAddPost(postData);
+    onCancel();
+  }
   return (
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={submitFormHandler}>
       <h3>New Entry</h3>
       <p>
         <label htmlFor="name">Name</label>
-        <input type="text" id="name" onChange={onAuthorChange} required />
+        <input type="text" id="name" onChange={authorChangeHandler} required />
       </p>
       <p>
         <label htmlFor="feeling">Feeling</label>
         <select
-          onChange={onFeelingChange}
+          onChange={feelingChangeHandler}
           defaultValue="-- Please Choose one --"
         >
-          <option value="">-- Please Choose one --</option>
+          <option value="">-- Please choose a feeling --</option>
           <option value="happy">Happy</option>
           <option value="sad">Sad</option>
           <option value="hungry">Hungry</option>
@@ -36,7 +59,7 @@ export default function NewPost({
           id="body"
           required
           rows={3}
-          onChange={onBodyChange}
+          onChange={bodyChangeHandler}
         ></textarea>
       </p>
       <p className={classes.actions}>
