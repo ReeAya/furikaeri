@@ -24,6 +24,14 @@
   text-align: left;
 }
 
+.feeling {
+  white-space: pre-wrap;
+  font-size: 1.25rem;
+  margin: 0.25rem 0 0 0;
+  color: #444;
+  text-align: left;
+}
+
 @keyframes animate-in {
   from {
     opacity: 0;
