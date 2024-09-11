@@ -19,8 +19,10 @@ export default function Post(props) {
   return (
     <li className={classes.post}>
       <p className={classes.author}>{props.author}</p>
-      <p className={classes.text}>{evaluateFeeling(props.feeling)}</p>
-      <p className={classes.text}>{props.body}</p>
+      <p className={classes.text}>
+        Today's feeling: {evaluateFeeling(props.feeling)}
+      </p>
+      <p className={classes.text}>Furikaeri: {props.body}</p>
     </li>
   );
 }
