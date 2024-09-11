@@ -1,5 +1,5 @@
 .form {
-    background-color: rgb(201, 196, 196);
+    background-color: #d6e6ee;
     padding: 1rem;
     width: 20rem;
     /* margin: 2rem auto;
@@ -24,7 +24,7 @@
     padding: 0.5rem;
     border-radius: 6px;
     border: none;
-    background-color: rgb(236, 230, 230);
+    background-color: #ffffffbd;
     color: #28262c;
 }
 
@@ -53,18 +53,16 @@
     padding: 0.5rem 1.5rem;
     border: none;
     border-radius: 4px;
-    background-color: #34036c;
-    color: #e5d5f7;
+    border: 1px solid #d6e6ee;
+    background-color: #fff;
+    color: #444;
 }
 
 .actions button:hover {
-    background-color: #23014a;
-}
-
-.actions button[type="button"] {
-    background-color: transparent;
+    background-color: #d6e6ee;
+    /* color: #fff; */
 }
 
 .actions button[type="button"]:hover {
-    color: #d1bee6;
+    /* color: #d6e6eeb9; */
 }

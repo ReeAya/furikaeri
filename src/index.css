@@ -13,12 +13,12 @@
 
 a {
     font-weight: 500;
-    color: #646cff;
+    color: #61dafbaa;
     text-decoration: inherit;
 }
 
 a:hover {
-    color: #535bf2;
+    color: #61dafbaa;
 }
 
 body {
@@ -28,7 +28,7 @@ body {
     min-width: 320px;
     /* min-height: 100vh; */
     height: 100%;
-    background-color: rgba(221, 160, 221, 0.508);
+    /* background-color: rgba(221, 160, 221, 0.508); */
 }
 
 h1 {
@@ -49,7 +49,7 @@ button {
 }
 
 button:hover {
-    border-color: #646cff;
+    border-color: #61dafbaa;
 }
 
 button:focus,
@@ -63,7 +63,7 @@ button:focus-visible {
         background-color: #ffffff;
     }
     a:hover {
-        color: #747bff;
+        color: #61dafbaa;
     }
     button {
         background-color: #f9f9f9;

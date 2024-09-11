@@ -1,18 +1,23 @@
 import "./NewPost.module.css";
 import classes from "./NewPost.module.css";
 
-export default function NewPost(props) {
+export default function NewPost({
+  onAuthorChange,
+  onCancel,
+  onFeelingChange,
+  onBodyChange,
+}) {
   return (
     <form className={classes.form}>
       <h3>New Entry</h3>
       <p>
         <label htmlFor="name">Name</label>
-        <input type="text" id="name" onChange={props.onAuthorChange} required />
+        <input type="text" id="name" onChange={onAuthorChange} required />
       </p>
       <p>
         <label htmlFor="feeling">Feeling</label>
         <select
-          onChange={props.onFeelingChange}
+          onChange={onFeelingChange}
           defaultValue="-- Please Choose one --"
         >
           <option value="">-- Please Choose one --</option>
@@ -31,8 +36,14 @@ export default function NewPost(props) {
           id="body"
           required
           rows={3}
-          onChange={props.onBodyChange}
+          onChange={onBodyChange}
         ></textarea>
+      </p>
+      <p className={classes.actions}>
+        <button type="button" onClick={onCancel}>
+          Cancel
+        </button>
+        <button type="submit">Submit</button>
       </p>
     </form>
   );

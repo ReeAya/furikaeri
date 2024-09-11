@@ -4,13 +4,12 @@ import NewPost from "./NewPost";
 import Modal from "./Modal";
 import classes from "./PostsList.module.css";
 
-export default function PostsList() {
+export default function PostsList({ modalVisible, onStopPosting }) {
   //
   const [enteredBody, setEnteredBody] = useState("");
   const [enteredAuthor, setEnteredAuthor] = useState("");
   const [enteredFeeling, setEnteredFeeling] = useState("");
   //
-  const [modalIsVisible, setModalIsVisible] = useState(true);
 
   function bodyChangeHandler(e) {
     setEnteredBody(e.target.value);
@@ -23,25 +22,23 @@ export default function PostsList() {
     console.log(e.target.value);
   }
 
-  function showModalHandler() {
-    setModalIsVisible(false);
-  }
   let modalContent;
 
-  if (modalIsVisible) {
+  if (modalVisible) {
     modalContent = (
-      <Modal onClose={showModalHandler}>
+      <Modal onClose={onStopPosting}>
         <NewPost
           onBodyChange={bodyChangeHandler}
           onAuthorChange={authorChangeHandler}
           onFeelingChange={feelingChangeHandler}
+          onCancel={onStopPosting}
         />
       </Modal>
     );
   }
   return (
     <>
-      {modalIsVisible ? modalContent : null}
+      {modalVisible ? modalContent : null}
 
       <ul className={classes.posts}>
         <Post
