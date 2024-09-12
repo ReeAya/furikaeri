@@ -8,7 +8,7 @@ import Post from "./components/Post";
 import PostsList from "./components/PostsList";
 
 function App() {
-  const [modalIsVisible, setModalIsVisible] = useState(true);
+  const [modalIsVisible, setModalIsVisible] = useState(false);
   function showModalHandler() {
     setModalIsVisible(true);
   }
