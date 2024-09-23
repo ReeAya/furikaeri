@@ -1,8 +1,8 @@
 .header {
     /* padding: 2rem 10%; */
-    margin: 2rem 0;
+    /* margin: 2rem 0; */
     padding: 0 1rem;
-    margin-top: 0;
+    margin: 0;
     text-align: center;
     display: flex;
     justify-content: space-between;
@@ -31,6 +31,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .button:hover {
