@@ -10,18 +10,12 @@ export default function PostsList({ modalVisible, onStopPosting }) {
 
   let modalContent;
 
-  function addPostsHandler(postsData) {
-    {
-      fetch("http://localhost:8080/posts", {
-        method: "POST",
-        body: JSON.stringify(postsData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      setPosts((existingPosts) => [postsData, ...existingPosts]);
-    }
-  }
+  // function addPostsHandler(postsData) {
+  //   {
+    
+  //     setPosts((existingPosts) => [postsData, ...existingPosts]);
+  //   }
+  // }
   if (modalVisible) {
     modalContent = (
       <Modal onClose={onStopPosting}>
