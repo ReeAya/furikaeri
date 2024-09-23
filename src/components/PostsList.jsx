@@ -10,12 +10,6 @@ export default function PostsList({ modalVisible, onStopPosting }) {
 
   let modalContent;
 
-  // function addPostsHandler(postsData) {
-  //   {
-    
-  //     setPosts((existingPosts) => [postsData, ...existingPosts]);
-  //   }
-  // }
   if (modalVisible) {
     modalContent = (
       <Modal onClose={onStopPosting}>
@@ -34,7 +28,8 @@ export default function PostsList({ modalVisible, onStopPosting }) {
               author={post.author}
               feeling={post.feeling}
               body={post.body}
-              key={uuidv4()}
+              id={post.id}
+              key={post.id}
             />
           ))}
         </ul>

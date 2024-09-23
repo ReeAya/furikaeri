@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import classes from "./Post.module.css";
 
 export default function Post(props) {
@@ -17,12 +18,16 @@ export default function Post(props) {
     }
   }
   return (
-    <li className={classes.post}>
-      <p className={classes.author}>{props.author}</p>
-      <p className={classes.text}>
-        Today's feeling: {evaluateFeeling(props.feeling)}
-      </p>
-      <p className={classes.text}>Furikaeri: {props.body}</p>
-    </li>
+      <Link to={props.id}>
+           <li className={classes.post}>
+              <p className={classes.author}>{props.author}</p>
+              <p className={classes.text}>
+                 Today's feeling: {evaluateFeeling(props.feeling)}
+             </p>
+              <p className={classes.text}>Furikaeri: {props.body}</p>
+          </li>
+        </Link>
+
+  
   );
 }
