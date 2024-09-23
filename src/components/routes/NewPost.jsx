@@ -1,6 +1,7 @@
 import { useState } from "react";
-import "./NewPost.module.css";
-import classes from "./NewPost.module.css";
+
+import classes from "../routes/NewPost.module.css";
+import Modal from "../Modal";
 
 export default function NewPost({ onCancel, onAddPost }) {
   //
@@ -31,6 +32,7 @@ export default function NewPost({ onCancel, onAddPost }) {
     onCancel();
   }
   return (
+    <Modal>
     <form className={classes.form} onSubmit={submitFormHandler}>
       <h3>New Entry</h3>
       <p>
@@ -69,5 +71,6 @@ export default function NewPost({ onCancel, onAddPost }) {
         <button type="submit">Submit</button>
       </p>
     </form>
+    </Modal>
   );
 }
