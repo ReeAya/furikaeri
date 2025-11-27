@@ -6,41 +6,41 @@ import Modal from "./Modal";
 import classes from "./PostsList.module.css";
 
 export default function PostsList({ modalVisible, onStopPosting }) {
-  const posts = useLoaderData()
+    const posts = useLoaderData()
 
-  let modalContent;
+    let modalContent;
 
-  if (modalVisible) {
-    modalContent = (
-      <Modal onClose={onStopPosting}>
-        <NewPost onCancel={onStopPosting} onAddPost={addPostsHandler} />
-      </Modal>
+    if (modalVisible) {
+        modalContent = (
+            <Modal onClose={onStopPosting}>
+                <NewPost onCancel={onStopPosting} onAddPost={addPostsHandler} />
+            </Modal>
+        );
+    }
+    return (
+        <>
+            {modalVisible ? modalContent : null}
+
+            {posts.length > 0 && (
+                <ul className={classes.posts}>
+                    {posts.map((post) => (
+                        <Post
+                            author={post.author}
+                            feeling={post.feeling}
+                            body={post.body}
+                            id={post.id}
+                            key={post.id}
+                        />
+                    ))}
+                </ul>
+            )}
+            {posts.length === 0 && (
+                <div style={{ textAlign: "center" }}>
+                    <h2>There are no posts!</h2>
+                    <p>Add some posts!</p>
+                </div>
+            )}
+
+        </>
     );
-  }
-  return (
-    <>
-      {modalVisible ? modalContent : null}
-
-      {posts.length > 0 && (
-        <ul className={classes.posts}>
-          {posts.map((post) => (
-            <Post
-              author={post.author}
-              feeling={post.feeling}
-              body={post.body}
-              id={post.id}
-              key={post.id}
-            />
-          ))}
-        </ul>
-      )}
-      { posts.length === 0 && (
-        <div style={{ textAlign: "center" }}>
-          <h2>There are no posts!</h2>
-          <p>Add some posts!</p>
-        </div>
-      )}
-     
-    </>
-  );
 }
